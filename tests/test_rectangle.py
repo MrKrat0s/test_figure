@@ -20,6 +20,10 @@ class TestRectangle:
         with pytest.raises(raise_error):
             Rectangle(side1, side2)
 
+    @pytest.mark.parametrize("side1, side2", tt.create_some_rectangle(3))
+    def test_check_name(self, side1, side2):
+        assert Rectangle(side1, side2).name == "Rectangle"
+
     """Tests object calc parameters"""
 
     @pytest.mark.parametrize("side1, side2", tt.create_some_rectangle(3))

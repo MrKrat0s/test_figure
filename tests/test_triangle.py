@@ -18,6 +18,10 @@ class TestTriangle:
     def test_create_wrong_triangle(self, side1, side2, side3):
         assert Triangle(side1, side2, side3) is None
 
+    @pytest.mark.parametrize("side1, side2, side3", tt.create_some_triangle(3))
+    def test_check_name(self, side1, side2, side3):
+        assert Triangle(side1, side2, side3).name == "Triangle"
+
     """Tests object calc parameters"""
 
     @pytest.mark.parametrize("side1, side2, side3, raise_error", [("1", 1, 1, TypeError),
